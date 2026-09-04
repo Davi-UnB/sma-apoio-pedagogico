@@ -1,0 +1,20 @@
+# Sistema e IDEs
+.DS_Store
+.idea/
+*.iml
+
+# Compilados e Caches (Java)
+**/bin/
+**/out/
+*.class
+
+# Arquivos temporários gerados pelo JADE
+**/APDescription.txt
+**/MTPs-Main-Container.txt
+
+# Python / IA Local / PLN (para os módulos que virão)
+**/venv/
+**/.venv/
+**/__pycache__/
+*.gguf
+*.bin
