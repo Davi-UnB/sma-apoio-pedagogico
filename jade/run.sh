@@ -1,9 +1,11 @@
 #!/bin/zsh
 
-# Configura para usar o Java 8 (Zulu) se disponível no Mac
+# Configura para usar o Java 8 (Zulu)
 if /usr/libexec/java_home -v 1.8 >/dev/null 2>&1; then
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    export PATH="$JAVA_HOME/bin:$PATH"
 fi
+
 
 echo "==========================================="
 echo "☕ Java em uso: $(java -version 2>&1 | head -n 1)"
@@ -20,8 +22,10 @@ if [ $? -ne 0 ]; then
 fi
 
 # 2. Define os agentes (usa o primeiro argumento do script ou o padrão)
-AGENTES=${1:-"agente1:MeuPrimeiroAgente"}
+AGENTES=${1:-"curador:AgenteCurador;ensino:AgenteEnsino"}
 
 echo "🚀 Iniciando JADE com agentes: $AGENTES"
 echo "==========================================="
-java -cp "lib/jade.jar:bin" jade.Boot -gui "$AGENTES"
+java -cp "lib/jade.jar:lib/jadeExamples.jar:bin" jade.Boot -gui "$AGENTES"
+
+
